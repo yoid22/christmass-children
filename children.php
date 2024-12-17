@@ -101,7 +101,7 @@ $gift = $db->query("SELECT * FROM gifts")->fetchAll();
 
   <?php
   foreach ($labor as $🤣) {
-    foreach ($gift as $gifts) {
+    
     ?>
     <div class="card">
       <div class="container">
@@ -114,15 +114,22 @@ $gift = $db->query("SELECT * FROM gifts")->fetchAll();
 
         foreach ($sigma as $🤦‍♀️) {
           if ($🤣["id"] == $🤦‍♀️["sender_id"]) {
+
             echo "<ul><li><strong>Letter:</strong> " . $🤦‍♀️["letter_text"] . " 😜</li></ul>";
+            foreach ($gift as $gifts) {
+                
+               if(str_contains($🤦‍♀️["letter_text"], $gifts["name"] )){
+                echo "<li><strong>Present:</strong> " . $gifts["name"] . " 😁</li>"; 
+               } 
+               }
           }
         }
-         echo "<li><strong>Present:</strong> " . $gifts["name"] . " 😁</li>";
+       
         ?>
       </div>
     </div>
     <?php
-  }
+
 }
   ?>
 
