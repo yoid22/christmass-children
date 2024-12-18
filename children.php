@@ -106,6 +106,7 @@ $gift = $db->query("SELECT * FROM gifts")->fetchAll();
     <div class="card">
       <div class="container">
         <?php
+        
         echo "<ul>";
         echo "<li><strong>Name:</strong> " . $🤣["firstname"] . " " . $🤣["middlename"] . " " . $🤣["surname"] . " 🎁</li>";
         echo "<li><strong>Age:</strong> " . $🤣["age"] . " 🎅</li>";
@@ -115,12 +116,24 @@ $gift = $db->query("SELECT * FROM gifts")->fetchAll();
         foreach ($sigma as $🤦‍♀️) {
           if ($🤣["id"] == $🤦‍♀️["sender_id"]) {
 
-            echo "<ul><li><strong>Letter:</strong> " . $🤦‍♀️["letter_text"] . " 😜</li></ul>";
+
+          $letter_text = $🤦‍♀️["letter_text"];
+
+          $presents = explode(":", $letter_text);
+          $presents = explode(",", $presents[sizeof($presents) - 1]);
+
+          foreach ($presents as $present) {
+            $trimmedGift = trim($present);
+            $letter_text = str_replace($trimmedGift, "<strong>$trimmedGift</strong>", $letter_text);
+        }
+
+            echo "<ul><li><strong>Letter:</strong> " . $letter_text . " 😜</li></ul>";
             foreach ($gift as $gifts) {
-                
-               if(str_contains($🤦‍♀️["letter_text"], $gifts["name"] )){
+              
+               if(str_contains($🤦‍♀️["letter_text"],  strtolower($gifts["name"]) )){
                 echo "<li><strong>Present:</strong> " . $gifts["name"] . " 😁</li>"; 
                } 
+               
                }
           }
         }
