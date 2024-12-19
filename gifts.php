@@ -21,7 +21,7 @@ foreach ($posts as $gift) {
     $countAvailable = $gift["count_available"];
     $requests = $gift["requests"];
 
-    echo "<li>" . $giftName . " - Prasa: " . $requests . " children. ";
+    echo "<li>" . $giftName . " - Prasa: " . $requests . " berni. ";
 
     // Check if the available count is sufficient
     if ($requests > $countAvailable) {
